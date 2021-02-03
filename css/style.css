@@ -49,6 +49,7 @@ ul{
 }
 li{
     margin-top: .5rem;
+    width: 100%;
 }
 .checked{
     text-decoration: line-through;
@@ -69,7 +70,7 @@ li{
     border-radius: .25rem;
     width: 5rem;
     background-color: rgba(0, 0, 0 , .3);
-    color: #fff;
+    color: tomato;
     font-size: 1rem;
     cursor: pointer;
 }

@@ -8,26 +8,15 @@ function createTask(){
             description: taskDesc
         }
         addTaskOnFirebase(task)
-        dataWasUpdated((snapshot) => {
-            tasks = []
-            snapshot.forEach((doc) => { 
-                tasks.push(
-                    {
-                    data: doc.data(), 
-                    id: doc.id
-                    })
-            })
-            updateScreen()
-        })
+        dataWasUpdated()
     }else{
         alert('A tarefa não pode ser vazia')
     }
-
 }
 
 
 function updateScreen(){
-    let list = '<ul id="list">'
+    let list = '<ul>'
     tasks.forEach((task) => {
         list += `<div class="li-container">
                     <li> ${task.data.description}</li> <input type="submit" class="del" value="Deletar" id="${task.id}" onclick="deleteTask(event)">
@@ -42,8 +31,19 @@ function updateScreen(){
 function deleteTask(event){
     let id = event.target.id
     deleteTaskOnFirebase(id)
-    updateScreen()
+    dataWasUpdated()
 }
+
+dataWasUpdated((snapshot) => {
+    tasks = []
+    snapshot.forEach((doc) => {
+        tasks.push({
+            data: doc.data(),
+            id: doc.id
+        })
+    })
+    updateScreen()
+})
 
 
 // Events
@@ -55,18 +55,4 @@ document.getElementById('list').addEventListener('click', function(event){
     if(event.target.tagName == 'LI'){
        event.target.classList.toggle('checked')
     }
-})
-
-document.addEventListener('DOMContentLoaded', () => {
-    dataWasUpdated((snapshot) => {
-        tasks = []
-        snapshot.forEach((doc) => { 
-            tasks.push(
-                {
-                data: doc.data(), 
-                id: doc.id
-                })
-        })
-        updateScreen()
-    })
 })

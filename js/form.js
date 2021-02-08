@@ -14,6 +14,8 @@ function signUp(){
     auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
         // Signed in 
+        email = document.querySelector('#email').value = ''
+        password = document.querySelector('#password').value = ''
         alert('Usuário cadastrado com sucesso!')
     })
     .catch((error) => {

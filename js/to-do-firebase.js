@@ -30,6 +30,12 @@ function deleteTaskOnFirebase(task){
         })
 }
 
+function signOut(){
+    auth.signOut()
+    window.location.replace("index.html")
+    collection = null
+}
+
 
 // Observators
 function dataWasUpdated(callback){
@@ -45,48 +51,3 @@ auth.onAuthStateChanged((user) => {
       
     }
   });
-
-
-// Form Page functions
-function signUp(){
-    let email = document.querySelector('#email').value
-    let password = document.querySelector('#password').value
-    auth.createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-        // Signed in 
-        var user = userCredential.user.uid;
-        alert('Usuário cadastrado com sucesso!')
-        
-        // ...
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert('O endereço de e-mail já está sendo usado.')
-        // ..
-    });
-}
-
-function signIn(){
-    let email = document.querySelector('#email').value
-    let password = document.querySelector('#password').value
-    auth.signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-        // Signed in
-        var user = userCredential.user;
-        // collection = user
-        window.location.replace("todo.html")
-        // ...
-    })
-    .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert('Não há registro de usuário correspondente a este identificador.\nVerifique novamente seu email e senha.')
-    });
-}
-
-function signOut(){
-    auth.signOut()
-    window.location.replace("index.html")
-    collection = null
-}

@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TO-DO LIST - Log-In</title>
+    <title>To-do List</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-   <main class="main-content">
-        <div class="form-container">
-            <h1>ACCOUNT LOGIN</h1>
-            <input type="email" placeholder="Email" id="email">
-            <input type="password" placeholder="Password" id="password">
-            <input type="submit" value="Cadastrar" id="signUp">
-            <input type="submit" value="Entrar" id="signIn">
+    <div class="logOut-container">
+        <input class="btn" type="submit" value="SignOut" id="signOut">
     </div>
-   </main>
-   
+    
+    <div class="flex-container">
+        <div class="todo-container">
+            <h1>To-do List</h1>
+            <input type="text" id="newTask">
+            <input id="addTasks" class="btn" type="submit" value="Add">
+            <div id="list">               
+            </div>
+        </div>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
     <script src="./js/config.js"></script>
     <script src="./js/to-do-firebase.js"></script>
-    <script src="./js/form.js"></script>
+    <script src="./js/todo.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ let auth = firebase.auth()
 // Collection name
 let collection;
 
-function addTaskOnFirebase(task){
+function addTaskOnFirebase(task) {
     db.collection(collection)
         .add(task)
         .then((docRef) => {
@@ -18,19 +18,19 @@ function addTaskOnFirebase(task){
         })
 }
 
-function deleteTaskOnFirebase(task){
+function deleteTaskOnFirebase(task) {
     db.collection(collection)
         .doc(task)
         .delete()
         .then((docRef) => {
             console.log('Sucesses ', docRef)
         })
-        .catch((err)=>{
+        .catch((err) => {
             console.log('Error', err);
         })
 }
 
-function signOut(){
+function signOut() {
     auth.signOut()
     window.location.replace("index.html")
     collection = null
@@ -38,16 +38,16 @@ function signOut(){
 
 
 // Observators
-function dataWasUpdated(callback){
+function dataWasUpdated(callback) {
     db.collection(collection).onSnapshot(callback)
 }
 
 
 auth.onAuthStateChanged((user) => {
     if (user) {
-      var uid = user.uid;
-      collection = uid
+        var uid = user.uid;
+        collection = uid
     } else {
-      
+
     }
-  });
+});

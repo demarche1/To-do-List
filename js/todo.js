@@ -1,4 +1,3 @@
-
 let tasks = []
 
 function createTask(){
@@ -62,4 +61,3 @@ document.getElementById('list').addEventListener('click', function(event){
 document.getElementById('signOut').addEventListener('click', ()=>{
     signOut()
 })
-
